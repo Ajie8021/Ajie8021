@@ -1,4 +1,5 @@
 ## Hi there 👋
+我是大三的计科学生，学得杂，接触过Vue3和Spring Boot，跟着教程走了一遍前后端，也用MySQL简单存了存数据，算是把"前端-后端-数据库"这条线大概跑通了。不过我目前还停留在学习的阶段，要自己从头搭一个完整项目还是很吃力的，好在算是对一个网站运作有了点概念，不再完全是个黑盒了。我这人经常是三分钟热度，所以没什么特别擅长的技能、才艺。后面会打算做些项目。
 
 <!--
 **Ajie8021/Ajie8021** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
