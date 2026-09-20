@@ -21,8 +21,7 @@ import java.util.Objects;
 public final class ExpressionNormalizer {
 
     /** 工具类，禁止实例化。 */
-    private ExpressionNormalizer() {
-    }
+    private ExpressionNormalizer() {}
 
     /**
      * 将表达式转换为规范字符串。
@@ -40,32 +39,22 @@ public final class ExpressionNormalizer {
             return "N[" + number.getValue() + "]";
         }
 
-        BinaryExpression binary =
-                (BinaryExpression) expression;
+        BinaryExpression binary = (BinaryExpression) expression;
 
-        String left =
-                normalize(binary.getLeft());
+        String left = normalize(binary.getLeft());
 
-        String right =
-                normalize(binary.getRight());
+        String right = normalize(binary.getRight());
 
         // 交换律处理：保证可交换运算的左右子树顺序唯一
-        if (binary.getOperator().isCommutative()
-                && left.compareTo(right) > 0) {
-
+        if (binary.getOperator().isCommutative() && left.compareTo(right) > 0) {
             String temp = left;
             left = right;
             right = temp;
         }
 
         // 二元节点：以 E[运算符,左,右] 形式输出
-        return "E["
-                + binary.getOperator().name()
-                + ","
-                + left
-                + ","
-                + right
-                + "]";
+        return "E[" + binary.getOperator().name()
+                + "," + left + "," + right + "]";
     }
 
     /**
@@ -78,12 +67,9 @@ public final class ExpressionNormalizer {
      * @return 等价返回 true，否则返回 false
      */
     public static boolean isEquivalent(
-            Expression first,
-            Expression second) {
+        Expression first,
+        Expression second) {
 
-        return Objects.equals(
-                normalize(first),
-                normalize(second)
-        );
+        return Objects.equals(normalize(first), normalize(second));
     }
 }

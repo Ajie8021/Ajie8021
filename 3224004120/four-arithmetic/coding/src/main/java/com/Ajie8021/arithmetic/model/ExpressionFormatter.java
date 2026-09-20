@@ -28,8 +28,7 @@ public final class ExpressionFormatter {
         }
 
         // 非叶子节点必然是二元运算节点
-        BinaryExpression binary =
-                (BinaryExpression) expression;
+        BinaryExpression binary = (BinaryExpression) expression;
 
         String left =
                 formatChild(
@@ -45,11 +44,7 @@ public final class ExpressionFormatter {
                         true
                 );
 
-        return left
-                + " "
-                + binary.getOperator().getSymbol()
-                + " "
-                + right;
+        return left + " " + binary.getOperator().getSymbol() + " " + right;
     }
 
     /**
@@ -73,22 +68,17 @@ public final class ExpressionFormatter {
             return formatExpression(child);
         }
 
-        int childPrecedence =
-                binaryChild.getOperator().getPrecedence();
+        int childPrecedence = binaryChild.getOperator().getPrecedence();
 
-        int parentPrecedence =
-                parentOperator.getPrecedence();
+        int parentPrecedence = parentOperator.getPrecedence();
 
-        boolean needParentheses =
-                childPrecedence < parentPrecedence;
+        boolean needParentheses = childPrecedence < parentPrecedence;
 
         /*
          * 右子树如果和父节点优先级相同，为了保持原始二叉树结构，需要加括号。
          * 例如 1 + (2 + 3)
          */
-        if (rightChild
-                && childPrecedence == parentPrecedence) {
-
+        if (rightChild && childPrecedence == parentPrecedence) {
             needParentheses = true;
         }
 

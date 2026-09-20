@@ -62,23 +62,19 @@ public class ExerciseGenerator {
             );
         }
 
-        List<Expression> exercises =
-                new ArrayList<>(count);
+        List<Expression> exercises = new ArrayList<>(count);
 
         // 保存已生成题目的规范形式，用于高效去重
-        Set<String> normalizedExpressions =
-                new HashSet<>(count * 2);
+        Set<String> normalizedExpressions = new HashSet<>(count * 2);
 
         /*
          * 防止在取值范围过小、无法生成足够不同题目时死循环，如-n 10000 -r 1
          */
-        long maxAttempts =
-                Math.max(10_000L, count * 500L);
+        long maxAttempts = Math.max(10_000L, count * 500L);
 
         long attempts = 0;
 
-        while (exercises.size() < count
-                && attempts < maxAttempts) {
+        while (exercises.size() < count && attempts < maxAttempts) {
 
             attempts++;
 
@@ -98,10 +94,7 @@ public class ExerciseGenerator {
                 continue;
             }
 
-            String normalized =
-                    ExpressionNormalizer.normalize(
-                            expression
-                    );
+            String normalized = ExpressionNormalizer.normalize(expression);
 
             // 规范形式重复则视为同一道题，跳过
             if (!normalizedExpressions.add(normalized)) {

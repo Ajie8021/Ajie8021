@@ -51,8 +51,7 @@ public class ExpressionGenerator {
             );
         }
 
-        Expression expression =
-                generateExpression(operatorCount, range);
+        Expression expression = generateExpression(operatorCount, range);
 
         return expression;
     }
@@ -80,32 +79,17 @@ public class ExpressionGenerator {
         /*
          * 将剩余运算符随机分配给左右子树。
          */
-        int leftOperatorCount =
-                random.nextInt(operatorCount);
+        int leftOperatorCount = random.nextInt(operatorCount);
 
-        int rightOperatorCount =
-                operatorCount - 1 - leftOperatorCount;
+        int rightOperatorCount = operatorCount - 1 - leftOperatorCount;
 
-        Expression left =
-                generateExpression(
-                        leftOperatorCount,
-                        range
-                );
+        Expression left = generateExpression(leftOperatorCount, range);
 
-        Expression right =
-                generateExpression(
-                        rightOperatorCount,
-                        range
-                );
+        Expression right = generateExpression(rightOperatorCount, range);
 
-        Operator operator =
-                randomOperator();
+        Operator operator = randomOperator();
 
-        return new BinaryExpression(
-                left,
-                operator,
-                right
-        );
+        return new BinaryExpression(left, operator, right);
     }
 
     /**
@@ -123,8 +107,7 @@ public class ExpressionGenerator {
         /*
          * 一半概率生成自然数，一半概率生成真分数。
          */
-        boolean generateFraction =
-                range >= 3 && random.nextBoolean();
+        boolean generateFraction = range >= 3 && random.nextBoolean();
 
         if (!generateFraction) {
             long value = random.nextInt(range);
@@ -132,17 +115,12 @@ public class ExpressionGenerator {
         }
 
         // 分母至少为 2，保证存在合法的真分数
-        int denominator =
-                2 + random.nextInt(range - 2);
+        int denominator = 2 + random.nextInt(range - 2);
 
         // 分子取值范围 1 ~ denominator-1，保证为真分数
-        int numerator =
-                1 + random.nextInt(denominator - 1);
+        int numerator = 1 + random.nextInt(denominator - 1);
 
-        return new Fraction(
-                numerator,
-                denominator
-        );
+        return new Fraction(numerator, denominator);
     }
 
     /**

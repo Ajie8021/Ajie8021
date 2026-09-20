@@ -31,17 +31,13 @@ public class ExpressionCalculator {
         }
 
         // 非叶子节点必然是二元运算节点
-        BinaryExpression binary =
-                (BinaryExpression) expression;
+        BinaryExpression binary = (BinaryExpression) expression;
 
-        Fraction left =
-                calculate(binary.getLeft());
+        Fraction left = calculate(binary.getLeft());
 
-        Fraction right =
-                calculate(binary.getRight());
+        Fraction right = calculate(binary.getRight());
 
-        Operator operator =
-                binary.getOperator();
+        Operator operator = binary.getOperator();
 
         return switch (operator) {
             case ADD -> left.add(right);

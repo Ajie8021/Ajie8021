@@ -21,8 +21,7 @@ import com.Ajie8021.arithmetic.model.NumberExpression;
  */
 public class ExpressionValidator {
 
-    private final ExpressionCalculator calculator =
-            new ExpressionCalculator();
+    private final ExpressionCalculator calculator = new ExpressionCalculator();
 
     /**
      * 以布尔方式判断表达式是否合法。
@@ -35,8 +34,7 @@ public class ExpressionValidator {
         try {
             validate(expression);
             return true;
-        } catch (InvalidExpressionException
-                 | ArithmeticException e) {
+        } catch (InvalidExpressionException | ArithmeticException e) {
             return false;
         }
     }
@@ -56,8 +54,7 @@ public class ExpressionValidator {
         }
 
         // 运算符数量约束：一道题最多包含 3 个运算符
-        int operatorCount =
-                expression.getOperatorCount();
+        int operatorCount = expression.getOperatorCount();
 
         if (operatorCount > 3) {
             throw new InvalidExpressionException(
@@ -83,17 +80,14 @@ public class ExpressionValidator {
             return;
         }
 
-        BinaryExpression binary =
-                (BinaryExpression) expression;
+        BinaryExpression binary = (BinaryExpression) expression;
 
         validateNode(binary.getLeft());
         validateNode(binary.getRight());
 
-        Fraction left =
-                calculator.calculate(binary.getLeft());
+        Fraction left = calculator.calculate(binary.getLeft());
 
-        Fraction right =
-                calculator.calculate(binary.getRight());
+        Fraction right = calculator.calculate(binary.getRight());
 
         switch (binary.getOperator()) {
 

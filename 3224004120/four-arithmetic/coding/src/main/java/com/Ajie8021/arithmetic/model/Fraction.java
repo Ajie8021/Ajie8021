@@ -53,8 +53,7 @@ public final class Fraction implements Comparable<Fraction> {
                 numerator.multiply(other.denominator)
                         .add(other.numerator.multiply(denominator));
 
-        BigInteger newDenominator =
-                denominator.multiply(other.denominator);
+        BigInteger newDenominator = denominator.multiply(other.denominator);
 
         return new Fraction(newNumerator, newDenominator);
     }
@@ -64,8 +63,7 @@ public final class Fraction implements Comparable<Fraction> {
                 numerator.multiply(other.denominator)
                         .subtract(other.numerator.multiply(denominator));
 
-        BigInteger newDenominator =
-                denominator.multiply(other.denominator);
+        BigInteger newDenominator = denominator.multiply(other.denominator);
 
         return new Fraction(newNumerator, newDenominator);
     }
@@ -97,8 +95,7 @@ public final class Fraction implements Comparable<Fraction> {
      * 0 < numerator < denominator
      */
     public boolean isProperFraction() {
-        return numerator.signum() > 0
-                && numerator.compareTo(denominator) < 0;
+        return numerator.signum() > 0 && numerator.compareTo(denominator) < 0;
     }
 
     public boolean isInteger() {
@@ -114,8 +111,7 @@ public final class Fraction implements Comparable<Fraction> {
      */
     @Override
     public int compareTo(Fraction other) {
-        return numerator.multiply(other.denominator)
-                .compareTo(other.numerator.multiply(denominator));
+        return numerator.multiply(other.denominator).compareTo(other.numerator.multiply(denominator));
     }
 
     /**
@@ -143,8 +139,7 @@ public final class Fraction implements Comparable<Fraction> {
         }
 
         // 假分数转换为带分数形式，如 11/4 → 2'3/4
-        BigInteger[] divideAndRemainder =
-                numerator.divideAndRemainder(denominator);
+        BigInteger[] divideAndRemainder = numerator.divideAndRemainder(denominator);
 
         BigInteger whole = divideAndRemainder[0];
         BigInteger remainder = divideAndRemainder[1];
@@ -153,10 +148,7 @@ public final class Fraction implements Comparable<Fraction> {
             return whole.toString();
         }
 
-        return whole + "'"
-                + remainder
-                + "/"
-                + denominator;
+        return whole + "'" + remainder + "/" + denominator;
     }
 
     /**
@@ -188,11 +180,9 @@ public final class Fraction implements Comparable<Fraction> {
             }
 
             BigInteger whole = new BigInteger(wholePart);
-            BigInteger numerator =
-                    new BigInteger(fractionPart.substring(0, slashIndex));
+            BigInteger numerator = new BigInteger(fractionPart.substring(0, slashIndex));
 
-            BigInteger denominator =
-                    new BigInteger(fractionPart.substring(slashIndex + 1));
+            BigInteger denominator = new BigInteger(fractionPart.substring(slashIndex + 1));
 
             if (whole.signum() < 0
                     || numerator.signum() <= 0
@@ -203,8 +193,7 @@ public final class Fraction implements Comparable<Fraction> {
                 );
             }
 
-            BigInteger totalNumerator =
-                    whole.multiply(denominator).add(numerator);
+            BigInteger totalNumerator = whole.multiply(denominator).add(numerator);
 
             return new Fraction(totalNumerator, denominator);
         }
@@ -222,11 +211,9 @@ public final class Fraction implements Comparable<Fraction> {
             );
         }
 
-        BigInteger numerator =
-                new BigInteger(text.substring(0, slashIndex).trim());
+        BigInteger numerator = new BigInteger(text.substring(0, slashIndex).trim());
 
-        BigInteger denominator =
-                new BigInteger(text.substring(slashIndex + 1).trim());
+        BigInteger denominator = new BigInteger(text.substring(slashIndex + 1).trim());
 
         return new Fraction(numerator, denominator);
     }
