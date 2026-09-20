@@ -1,8 +1,10 @@
 package com.Ajie8021.arithmetic.io;
 
+import com.Ajie8021.arithmetic.calculator.ExpressionCalculator;
 import com.Ajie8021.arithmetic.exception.FileOperationException;
 import com.Ajie8021.arithmetic.model.Expression;
 import com.Ajie8021.arithmetic.model.ExpressionFormatter;
+import com.Ajie8021.arithmetic.model.Fraction;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -28,9 +30,7 @@ public class FileManager {
      * @param exercises 习题列表
      * @throws FileOperationException 文件写入失败时抛出
      */
-    public void writeExercises(
-            Path file,
-            List<Expression> exercises) {
+    public void writeExercises(Path file, List<Expression> exercises) {
 
         List<String> lines = new ArrayList<>(exercises.size());
 
@@ -68,6 +68,36 @@ public class FileManager {
             // 统一封装文件读取异常，避免底层 IOException 直接向上暴露。
             throw new FileOperationException(
                     "该文件读取失败: " + file, e
+            );
+        }
+    }
+
+    /**
+     * 将习题对应的答案写入文件。
+     *
+     * 每行格式为 "序号. 答案"，与 {@link #writeExercises} 的题号一一对应，
+     * 便于批改时按行比对。答案由 {@link ExpressionCalculator} 精确计算得到
+     *
+     * @param file       目标文件路径
+     * @param exercises  待计算答案的习题列表
+     * @param calculator 表达式计算器，由调用方传入以复用同一实例
+     * @throws FileOperationException 文件写入失败时抛出
+     */
+    public void writeAnswers(Path file, List<Expression> exercises, ExpressionCalculator calculator) {
+
+        List<String> lines = new ArrayList<>(exercises.size());
+
+        for (int i = 0; i < exercises.size(); i++) {
+            Fraction answer = calculator.calculate(exercises.get(i));
+            // 题号从 1 开始，与习题文件中的编号保持一致
+            lines.add((i + 1) + ". " + answer);
+        }
+
+        try {
+            Files.write(file, lines, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new FileOperationException(
+                    "该文件写入失败: " + file, e
             );
         }
     }

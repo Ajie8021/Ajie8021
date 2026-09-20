@@ -1,5 +1,6 @@
 package com.Ajie8021.arithmetic;
 
+import com.Ajie8021.arithmetic.calculator.ExpressionCalculator;
 import com.Ajie8021.arithmetic.cli.CommandLineOptions;
 import com.Ajie8021.arithmetic.cli.CommandLineParser;
 import com.Ajie8021.arithmetic.exception.InvalidArgumentException;
@@ -61,7 +62,10 @@ public class Main {
     }
 
     /**
-     * 出题模式：生成习题并写入默认输出文件 Exercises.txt。
+     * 出题模式：生成习题并同时写出题目文件与答案文件。
+     *
+     * 写出两份文件是为了让用户可直接进行自测或批改，
+     * 无需手工计算答案（答案由 {@link ExpressionCalculator} 精确计算）。
      *
      * @param number 习题数量
      * @param range  操作数数值范围上限
@@ -70,13 +74,20 @@ public class Main {
 
         ExerciseGenerator generator = new ExerciseGenerator();
         List<Expression> exercises = generator.generate(number, range);
-
-        Path output = Path.of("Exercises.txt");
         FileManager fileManager = new FileManager();
-        fileManager.writeExercises(output, exercises);
+        ExpressionCalculator calculator = new ExpressionCalculator();
+
+        Path exerciseOutput = Path.of("Exercises.txt");
+        Path answerOutput = Path.of("Answers.txt");
+
+        // 生成题目文件
+        fileManager.writeExercises(exerciseOutput, exercises);
+        // 计算所有题目的答案并生成答案文件
+        fileManager.writeAnswers(answerOutput, exercises, calculator);
 
         System.out.println("Generated " + exercises.size() + " exercises.");
-        System.out.println("Output: " + output.toAbsolutePath());
+        System.out.println("Exercises: " + exerciseOutput.toAbsolutePath());
+        System.out.println("Answers: " + answerOutput.toAbsolutePath());
     }
 
     /**
