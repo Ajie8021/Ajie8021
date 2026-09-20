@@ -24,7 +24,7 @@ public final class Fraction implements Comparable<Fraction> {
 
     public Fraction(BigInteger numerator, BigInteger denominator) {
         if (denominator.equals(BigInteger.ZERO)) {
-            throw new ArithmeticException("Denominator cannot be zero.");
+            throw new ArithmeticException("分母不能为0。");
         }
 
         // 统一将负号放在分子，保证分母始终为正
@@ -79,7 +79,7 @@ public final class Fraction implements Comparable<Fraction> {
 
     public Fraction divide(Fraction other) {
         if (other.numerator.equals(BigInteger.ZERO)) {
-            throw new ArithmeticException("Division by zero.");
+            throw new ArithmeticException("被除数为0。");
         }
 
         return new Fraction(
@@ -167,7 +167,7 @@ public final class Fraction implements Comparable<Fraction> {
      */
     public static Fraction parse(String text) {
         if (text == null || text.isBlank()) {
-            throw new IllegalArgumentException("Empty fraction.");
+            throw new IllegalArgumentException("空分数。");
         }
 
         text = text.trim();
@@ -183,7 +183,7 @@ public final class Fraction implements Comparable<Fraction> {
 
             if (slashIndex <= 0 || slashIndex == fractionPart.length() - 1) {
                 throw new IllegalArgumentException(
-                        "Invalid mixed fraction: " + text
+                        "无效带分数: " + text
                 );
             }
 
@@ -199,7 +199,7 @@ public final class Fraction implements Comparable<Fraction> {
                     || denominator.signum() <= 0
                     || numerator.compareTo(denominator) >= 0) {
                 throw new IllegalArgumentException(
-                        "Invalid mixed fraction: " + text
+                        "无效带分数: " + text
                 );
             }
 
@@ -218,7 +218,7 @@ public final class Fraction implements Comparable<Fraction> {
 
         if (slashIndex <= 0 || slashIndex == text.length() - 1) {
             throw new IllegalArgumentException(
-                    "Invalid fraction: " + text
+                    "无效分数: " + text
             );
         }
 

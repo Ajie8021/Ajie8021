@@ -56,7 +56,7 @@ public enum Operator {
             case '×', '*' -> MULTIPLY;
             case '÷', '/' -> DIVIDE;
             default -> throw new IllegalArgumentException(
-                    "Unknown operator: " + symbol
+                    "含有无效操作符: " + symbol
             );
         };
     }
