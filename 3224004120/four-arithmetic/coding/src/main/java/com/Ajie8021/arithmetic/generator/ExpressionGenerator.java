@@ -80,11 +80,9 @@ public class ExpressionGenerator {
          * 将剩余运算符随机分配给左右子树。
          */
         int leftOperatorCount = random.nextInt(operatorCount);
-
         int rightOperatorCount = operatorCount - 1 - leftOperatorCount;
 
         Expression left = generateExpression(leftOperatorCount, range);
-
         Expression right = generateExpression(rightOperatorCount, range);
 
         Operator operator = randomOperator();

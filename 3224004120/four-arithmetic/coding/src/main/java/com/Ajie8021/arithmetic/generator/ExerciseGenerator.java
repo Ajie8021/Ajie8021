@@ -71,11 +71,9 @@ public class ExerciseGenerator {
          * 防止在取值范围过小、无法生成足够不同题目时死循环，如-n 10000 -r 1
          */
         long maxAttempts = Math.max(10_000L, count * 500L);
-
         long attempts = 0;
 
         while (exercises.size() < count && attempts < maxAttempts) {
-
             attempts++;
 
             /*
