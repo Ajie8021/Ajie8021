@@ -40,8 +40,12 @@ public final class BinaryExpression implements Expression {
      */
     @Override
     public int getOperatorCount() {
-        return 1
-                + left.getOperatorCount()
-                + right.getOperatorCount();
+        return 1 + left.getOperatorCount() + right.getOperatorCount();
+    }
+
+    @Override
+    public String toString() {
+        // 仅用于调试，不含括号
+        return left + " " + operator.getSymbol() + " " + right;
     }
 }
