@@ -8,7 +8,7 @@
 src/
 ├── main/
 │   └── java/
-│       └── com/xxx/arithmetic/
+│       └── com/Ajie8021/arithmetic/
 │           ├── Main.java
 │           ├── cli/
 │           ├── model/
@@ -21,7 +21,7 @@ src/
 │
 └── test/
     └── java/
-        └── com/xxx/arithmetic/
+        └── com/Ajie8021/arithmetic/
 ```
 
 各包职责如下：
