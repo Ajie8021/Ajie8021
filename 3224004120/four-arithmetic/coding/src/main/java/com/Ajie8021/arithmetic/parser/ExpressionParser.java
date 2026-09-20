@@ -61,7 +61,6 @@ public class ExpressionParser {
         Expression expression = parseMultiplyDivide();
 
         while (true) {
-
             skipSpaces();
 
             if (match('+')) {
@@ -146,8 +145,7 @@ public class ExpressionParser {
 
         if (start == position) {
             throw new InvalidExpressionException(
-                    "位置处应为数字 "
-                            + position
+                    "位置处应为数字 " + position
             );
         }
 
@@ -171,7 +169,6 @@ public class ExpressionParser {
                 }
 
                 String numerator = input.substring(start, slashPosition);
-
                 String denominator = input.substring(denominatorStart, position);
 
                 return new NumberExpression(
@@ -194,9 +191,7 @@ public class ExpressionParser {
             }
 
             // 带分数必须形如 整数'分子/分母，缺一不可
-            if (numeratorStart == position
-                    || position >= input.length()
-                    || input.charAt(position) != '/') {
+            if (numeratorStart == position || position >= input.length() || input.charAt(position) != '/') {
                 throw new InvalidExpressionException(
                         "无效带分数。"
                 );
@@ -216,18 +211,9 @@ public class ExpressionParser {
                 );
             }
 
-            String whole =
-                    input.substring(start, start +
-                            (input.indexOf('\'', start) - start));
-
-            String numerator =
-                    input.substring(
-                            numeratorStart,
-                            input.indexOf('/', numeratorStart)
-                    );
-
-            String denominator =
-                    input.substring(denominatorStart, position);
+            String whole = input.substring(start, start + (input.indexOf('\'', start) - start));
+            String numerator = input.substring(numeratorStart, input.indexOf('/', numeratorStart));
+            String denominator = input.substring(denominatorStart, position);
 
             return new NumberExpression(
                     Fraction.parse(whole + "'" + numerator + "/" + denominator)

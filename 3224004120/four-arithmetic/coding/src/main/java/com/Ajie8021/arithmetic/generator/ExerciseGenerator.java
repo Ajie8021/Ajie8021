@@ -46,9 +46,7 @@ public class ExerciseGenerator {
      * @throws GenerationException 当数量或范围非法，或无法生成足够多的
      *                             不重复习题时抛出
      */
-    public List<Expression> generate(
-            int count,
-            int range) {
+    public List<Expression> generate(int count, int range) {
 
         if (count <= 0) {
             throw new GenerationException(

@@ -232,8 +232,7 @@ public final class Fraction implements Comparable<Fraction> {
             return false;
         }
 
-        return numerator.equals(other.numerator)
-                && denominator.equals(other.denominator);
+        return numerator.equals(other.numerator) && denominator.equals(other.denominator);
     }
 
     @Override

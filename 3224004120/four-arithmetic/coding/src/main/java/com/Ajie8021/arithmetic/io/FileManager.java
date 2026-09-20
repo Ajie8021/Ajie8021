@@ -79,9 +79,7 @@ public class FileManager {
      * @param content 要写入的成绩内容
      * @throws FileOperationException 文件写入失败时抛出
      */
-    public void writeGrade(
-            Path file,
-            String content) {
+    public void writeGrade(Path file, String content) {
 
         try {
             Files.writeString(file, content, StandardCharsets.UTF_8);

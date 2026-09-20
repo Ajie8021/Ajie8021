@@ -30,19 +30,8 @@ public final class ExpressionFormatter {
         // 非叶子节点必然是二元运算节点
         BinaryExpression binary = (BinaryExpression) expression;
 
-        String left =
-                formatChild(
-                        binary.getLeft(),
-                        binary.getOperator(),
-                        false
-                );
-
-        String right =
-                formatChild(
-                        binary.getRight(),
-                        binary.getOperator(),
-                        true
-                );
+        String left = formatChild(binary.getLeft(), binary.getOperator(), false);
+        String right = formatChild(binary.getRight(), binary.getOperator(), true);
 
         return left + " " + binary.getOperator().getSymbol() + " " + right;
     }
@@ -59,17 +48,13 @@ public final class ExpressionFormatter {
      * @param rightChild     是否为右子节点
      * @return 格式化后的字符串，必要时含括号
      */
-    private static String formatChild(
-            Expression child,
-            Operator parentOperator,
-            boolean rightChild) {
+    private static String formatChild(Expression child, Operator parentOperator, boolean rightChild) {
 
         if (!(child instanceof BinaryExpression binaryChild)) {
             return formatExpression(child);
         }
 
         int childPrecedence = binaryChild.getOperator().getPrecedence();
-
         int parentPrecedence = parentOperator.getPrecedence();
 
         boolean needParentheses = childPrecedence < parentPrecedence;

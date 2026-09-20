@@ -12,10 +12,7 @@ public final class BinaryExpression implements Expression {
     private final Operator operator;
     private final Expression right;
 
-    public BinaryExpression(
-            Expression left,
-            Operator operator,
-            Expression right) {
+    public BinaryExpression(Expression left, Operator operator, Expression right) {
 
         this.left = Objects.requireNonNull(left);
         this.operator = Objects.requireNonNull(operator);

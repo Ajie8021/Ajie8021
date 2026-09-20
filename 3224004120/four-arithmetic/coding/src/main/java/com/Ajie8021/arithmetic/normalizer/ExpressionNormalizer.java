@@ -42,7 +42,6 @@ public final class ExpressionNormalizer {
         BinaryExpression binary = (BinaryExpression) expression;
 
         String left = normalize(binary.getLeft());
-
         String right = normalize(binary.getRight());
 
         // 交换律处理：保证可交换运算的左右子树顺序唯一
@@ -66,10 +65,7 @@ public final class ExpressionNormalizer {
      * @param second 第二个表达式
      * @return 等价返回 true，否则返回 false
      */
-    public static boolean isEquivalent(
-        Expression first,
-        Expression second) {
-
+    public static boolean isEquivalent(Expression first, Expression second) {
         return Objects.equals(normalize(first), normalize(second));
     }
 }

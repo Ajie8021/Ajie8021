@@ -80,7 +80,6 @@ public class CommandLineParser {
 
         // 依据已解析的选项判断进入哪种模式
         boolean generationMode = number != null || range != null;
-
         boolean gradingMode = exerciseFile != null || answerFile != null;
 
         if (generationMode && gradingMode) {
@@ -137,10 +136,7 @@ public class CommandLineParser {
      * @return 选项对应的参数值
      * @throws InvalidArgumentException 取值越界（选项缺少值）时抛出
      */
-    private String nextValue(
-            String[] args,
-            int index,
-            String option) {
+    private String nextValue(String[] args, int index, String option) {
 
         if (index >= args.length) {
             throw new InvalidArgumentException(
@@ -161,9 +157,7 @@ public class CommandLineParser {
      * @return 解析得到的正整数
      * @throws InvalidArgumentException 文本非整数或数值非正时抛出
      */
-    private int parsePositiveInteger(
-            String text,
-            String option) {
+    private int parsePositiveInteger(String text, String option) {
 
         try {
             int value = Integer.parseInt(text);

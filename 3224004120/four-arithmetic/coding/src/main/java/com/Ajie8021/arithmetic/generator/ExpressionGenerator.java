@@ -66,9 +66,7 @@ public class ExpressionGenerator {
      * @param range         操作数的数值范围上限
      * @return 生成的子树
      */
-    private Expression generateExpression(
-            int operatorCount,
-            int range) {
+    private Expression generateExpression(int operatorCount, int range) {
 
         if (operatorCount == 0) {
             return new NumberExpression(
