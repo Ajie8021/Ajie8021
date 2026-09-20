@@ -272,13 +272,24 @@ else
 ...
 ```
 
-### 7.2 Answers.txt
+### 7.2 Answer.txt
+
+根据程序生成的文件Exercises.txt，保存对应的答案：
+
+```tex
+1. 答案1
+2. 答案2
+3. 答案3
+...
+```
+
+### 7.3 StuTest.txt
 
 答案文件按照题目顺序保存答案。
 
 程序假定输入的题目和答案符合规定格式。
 
-### 7.3 Grade.txt
+### 7.4 Grade.txt
 
 判题结果保存为：
 
@@ -307,7 +318,7 @@ java -jar Arithmetic.jar -n 10 -r 10
 ### 8.2 判题模式
 
 ```powershell
-java -jar Arithmetic.jar -e Exercises.txt -a Answers.txt
+java -jar Arithmetic.jar -e Exercises.txt -a StuTest.txt
 ```
 
 参数：

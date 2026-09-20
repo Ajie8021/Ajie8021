@@ -62,10 +62,7 @@ public class Main {
     }
 
     /**
-     * 出题模式：生成习题并同时写出题目文件与答案文件。
-     *
-     * 写出两份文件是为了让用户可直接进行自测或批改，
-     * 无需手工计算答案（答案由 {@link ExpressionCalculator} 精确计算）。
+     * 出题模式：生成习题并写入默认输出文件 Exercises.txt。
      *
      * @param number 习题数量
      * @param range  操作数数值范围上限
@@ -74,11 +71,11 @@ public class Main {
 
         ExerciseGenerator generator = new ExerciseGenerator();
         List<Expression> exercises = generator.generate(number, range);
-        FileManager fileManager = new FileManager();
-        ExpressionCalculator calculator = new ExpressionCalculator();
 
         Path exerciseOutput = Path.of("Exercises.txt");
         Path answerOutput = Path.of("Answers.txt");
+        FileManager fileManager = new FileManager();
+        ExpressionCalculator calculator = new ExpressionCalculator();
 
         // 生成题目文件
         fileManager.writeExercises(exerciseOutput, exercises);

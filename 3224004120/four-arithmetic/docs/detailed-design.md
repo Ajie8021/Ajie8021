@@ -381,7 +381,7 @@ java -jar Arithmetic.jar -n 10 -r 10
 例如：
 
 ```powershell
-java -jar Arithmetic.jar -e Exercises.txt -a Answers.txt
+java -jar Arithmetic.jar -e Exercises.txt -a StuTest.txt
 ```
 
 核心方法：
@@ -403,8 +403,8 @@ validateArguments()
 
 ```tex
 writeExercises()
-readExercises()
-readAnswers()
+readLines()
+writeAnswers()
 writeGrade()
 ```
 
