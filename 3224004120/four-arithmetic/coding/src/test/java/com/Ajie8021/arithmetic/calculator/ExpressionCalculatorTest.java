@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ExpressionCalculatorTest {
 
-    private final ExpressionCalculator calculator =
-            new ExpressionCalculator();
+    private final ExpressionCalculator calculator = new ExpressionCalculator();
 
     @Test
     void shouldCalculateAddition() {
